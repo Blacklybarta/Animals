@@ -14,11 +14,11 @@
         android:title="@string/menu_cats"
         app:showAsAction="never" />
 
-<!--    <item-->
-<!--        android:id="@+id/action_dogs"-->
-<!--        android:orderInCategory="80"-->
-<!--        android:title="@string/menu_dogs"-->
-<!--        app:showAsAction="never" />-->
+    <item
+        android:id="@+id/action_dogs"
+        android:orderInCategory="80"
+        android:title="@string/menu_dogs"
+        app:showAsAction="never" />
 
 <!--    <item-->
 <!--        android:id="@+id/action_foxes"-->

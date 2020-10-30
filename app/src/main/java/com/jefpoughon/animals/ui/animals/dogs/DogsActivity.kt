@@ -1,4 +1,4 @@
-package com.jefpoughon.animals.ui.animals.cats
+package com.jefpoughon.animals.ui.animals.dogs
 
 import android.os.Bundle
 import android.util.Log
@@ -9,16 +9,16 @@ import androidx.recyclerview.widget.RecyclerView
 import com.google.gson.GsonBuilder
 import com.jefpoughon.animals.R
 import com.jefpoughon.animals.model.AnimalPicture
-import com.jefpoughon.animals.service.CatService
+import com.jefpoughon.animals.service.DogService
 import com.jefpoughon.animals.ui.BaseActivity
 import com.jefpoughon.animals.ui.animals.AnimalAdapter
-import kotlinx.android.synthetic.main.activity_cats.*
+import kotlinx.android.synthetic.main.activity_dogs.*
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 
-class CatsActivity : BaseActivity() {
+class DogsActivity : BaseActivity() {
 
-    private lateinit var catService: CatService
+    private lateinit var dogService: DogService
 
     private lateinit var recyclerView: RecyclerView
     private lateinit var readerAdapter: RecyclerView.Adapter<*>
@@ -26,25 +26,23 @@ class CatsActivity : BaseActivity() {
 
     private var animals = ArrayList<AnimalPicture>()
 
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_cats)
+        setContentView(R.layout.activity_dogs)
 
         viewManager = LinearLayoutManager(this)
         readerAdapter = AnimalAdapter(animals, this)
 
-        recyclerView = cats_rv.apply {
+        recyclerView = dogs_rv.apply {
             setHasFixedSize(true)
             layoutManager = viewManager
             adapter = readerAdapter
         }
-
     }
 
     override fun onResume() {
         super.onResume()
-        catService = CatService.Creator.create()
+        dogService = DogService.Creator.create()
         lifecycleScope.launchWhenStarted {
             try {
                 animals.clear()
@@ -52,7 +50,7 @@ class CatsActivity : BaseActivity() {
                 for (i in 0 until settings.number.toInt()) {
                     animals.add(
                         GsonBuilder().create()
-                            .fromJson(catService.getCat(), AnimalPicture::class.java)
+                            .fromJson(dogService.getDog(), AnimalPicture::class.java)
                     )
                 }
             } catch (exception: Exception) {
@@ -67,6 +65,6 @@ class CatsActivity : BaseActivity() {
 
     private fun refreshRecyclerView() {
         readerAdapter.notifyDataSetChanged()
-        pgb_cats.visibility = View.GONE
+        pgb_dogs.visibility = View.GONE
     }
 }

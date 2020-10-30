@@ -5,24 +5,24 @@ import retrofit2.Retrofit
 import retrofit2.converter.scalars.ScalarsConverterFactory
 import retrofit2.http.GET
 
-private const val CAT_BASE_URL = "https://aws.random.cat"
+private const val DOG_BASE_URL = "https://random.dog"
 
-interface CatService  {
+interface DogService {
 
-    @GET("/meow")
-    suspend fun getCat(): String
+    @GET("/woof.json")
+    suspend fun getDog(): String
 
     object Creator {
         @JvmStatic
-        fun create(): CatService {
+        fun create(): DogService {
 
             val retrofit = Retrofit.Builder().apply {
                 client(OkHttpClient.Builder().build())
-                baseUrl(CAT_BASE_URL)
+                baseUrl(DOG_BASE_URL)
                 addConverterFactory(ScalarsConverterFactory.create())
             }.build()
 
-            return retrofit.create(CatService::class.java)
+            return retrofit.create(DogService::class.java)
         }
     }
 
