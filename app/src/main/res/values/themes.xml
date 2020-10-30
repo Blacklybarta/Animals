@@ -14,6 +14,16 @@
         <!-- Customize your theme here. -->
     </style>
 
+    <style name="Theme.Animals.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+    <style name="Theme.Animals.CustomCardview">
+        <item name="elevation">5dp</item>
+        <item name="cornerRadius">5dp</item>
+    </style>
+
     <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
 
     <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
