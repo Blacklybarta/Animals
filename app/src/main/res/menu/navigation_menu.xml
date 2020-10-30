@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/action_settings"
+        android:orderInCategory="80"
+        android:title="@string/menu_settings"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/action_cats"
+        android:orderInCategory="80"
+        android:title="@string/menu_cats"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/action_dogs"
+        android:orderInCategory="80"
+        android:title="@string/menu_dogs"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/action_foxes"
+        android:orderInCategory="80"
+        android:title="@string/menu_foxes"
+        app:showAsAction="never" />
+
+</menu>

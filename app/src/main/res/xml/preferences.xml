@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <com.takisoft.preferencex.PreferenceCategory android:title="@string/pref_animalCat">
+
+        <SwitchPreference
+            android:defaultValue="true"
+            android:key="key_cats"
+            android:summaryOff="@string/pref_catsSummaryOff"
+            android:summaryOn="@string/pref_catsSummaryOn"
+            android:title="@string/pref_cats" />
+
+        <SwitchPreference
+            android:defaultValue="false"
+            android:key="key_dogs"
+            android:title="@string/pref_dogs" />
+
+        <SwitchPreference
+            android:defaultValue="false"
+            android:key="key_foxes"
+            android:title="@string/pref_foxes" />
+
+    </com.takisoft.preferencex.PreferenceCategory>
+
+    <com.takisoft.preferencex.PreferenceCategory android:title="@string/pref_globalCat">
+
+        <com.takisoft.preferencex.EditTextPreference
+            android:inputType="number"
+            android:key="key_number"
+            android:title="@string/pref_nbItems"
+            app:useSimpleSummaryProvider="true" />
+
+    </com.takisoft.preferencex.PreferenceCategory>
+
+
+</PreferenceScreen>
