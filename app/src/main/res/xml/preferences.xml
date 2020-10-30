@@ -14,11 +14,15 @@
         <SwitchPreference
             android:defaultValue="false"
             android:key="key_dogs"
+            android:summaryOff="@string/pref_dogsSummaryOff"
+            android:summaryOn="@string/pref_dogsSummaryOn"
             android:title="@string/pref_dogs" />
 
         <SwitchPreference
             android:defaultValue="false"
             android:key="key_foxes"
+            android:summaryOff="@string/pref_foxesSummaryOff"
+            android:summaryOn="@string/pref_foxesSummaryOn"
             android:title="@string/pref_foxes" />
 
     </com.takisoft.preferencex.PreferenceCategory>

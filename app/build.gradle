@@ -2,6 +2,7 @@ plugins {
     id 'com.android.application'
     id 'kotlin-android'
     id 'kotlin-android-extensions'
+    id 'kotlin-kapt'
 }
 
 android {
@@ -34,6 +35,10 @@ android {
 }
 
 dependencies {
+    configurations {
+        all*.exclude group: 'xpp3', module: 'xpp3'
+        implementation.exclude group: "org.apache.httpcomponents", module: "httpclient"
+    }
 
     implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
     implementation 'androidx.core:core-ktx:1.3.2'
@@ -42,6 +47,24 @@ dependencies {
     implementation 'androidx.constraintlayout:constraintlayout:2.0.2'
     implementation 'androidx.preference:preference-ktx:1.1.1'
     implementation 'com.takisoft.preferencex:preferencex:1.1.0'
+
+    //Kotlin Coroutines
+    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-core:1.3.7'
+    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.3.7'
+
+    // Retrofit
+    implementation 'com.squareup.retrofit2:retrofit:2.9.0'
+    implementation 'com.squareup.retrofit2:converter-moshi:2.9.0'
+    implementation 'com.squareup.okhttp3:okhttp:3.12.1'
+    implementation 'com.squareup.retrofit2:converter-scalars:2.1.0'
+    implementation 'com.google.code.gson:gson:2.8.6'
+
+    //Glide
+    implementation 'com.github.bumptech.glide:glide:4.11.0'
+
+    //Jetpack
+    implementation 'androidx.lifecycle:lifecycle-runtime-ktx:2.2.0'
+    kapt 'androidx.lifecycle:lifecycle-compiler:2.2.0'
 
     // Koin
     implementation "org.koin:koin-android:2.0.1"
