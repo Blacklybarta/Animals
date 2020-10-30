@@ -7,13 +7,10 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.jefpoughon.animals.R
 import com.jefpoughon.animals.model.AnimalPicture
-import com.jefpoughon.animals.ui.animals.cats.CatsActivity
+import com.jefpoughon.animals.ui.BaseActivity
 import kotlinx.android.synthetic.main.animal_row.view.*
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
 
-class AnimalAdapter(private val animal: List<AnimalPicture>, private val activity: CatsActivity) :
+class AnimalAdapter(private val animal: List<AnimalPicture>, private val activity: BaseActivity) :
     RecyclerView.Adapter<AnimalAdapter.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) =
@@ -29,9 +26,9 @@ class AnimalAdapter(private val animal: List<AnimalPicture>, private val activit
     }
 
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        fun bind(item: AnimalPicture, activity: CatsActivity) = with(itemView) {
+        fun bind(item: AnimalPicture, activity: BaseActivity) = with(itemView) {
             Glide.with(activity)
-                .load(item.file)
+                .load(if (item.file.isNotEmpty()) item.file else item.url)
                 .circleCrop()
                 .into(animal_image)
             animal_image.setOnClickListener {

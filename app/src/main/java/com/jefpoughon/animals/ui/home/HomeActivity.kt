@@ -1,32 +1,19 @@
 package com.jefpoughon.animals.ui.home
 
 import android.content.Intent
-import android.graphics.BitmapFactory
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.view.MenuItem
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.core.view.GravityCompat
-import androidx.lifecycle.lifecycleScope
-import com.bumptech.glide.Glide
 import com.google.android.material.navigation.NavigationView
-import com.google.gson.GsonBuilder
 import com.jefpoughon.animals.R
-import com.jefpoughon.animals.model.AnimalPicture
-import com.jefpoughon.animals.service.CatService
+import com.jefpoughon.animals.ui.BaseActivity
 import com.jefpoughon.animals.ui.animals.cats.CatsActivity
+import com.jefpoughon.animals.ui.animals.dogs.DogsActivity
 import com.jefpoughon.animals.ui.settings.SettingsActivity
 import kotlinx.android.synthetic.main.activity_home.*
-import kotlinx.android.synthetic.main.navigation_header.*
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.withContext
-import org.koin.core.KoinComponent
-import org.koin.core.inject
-import java.io.InputStream
-import java.net.URL
 
-class HomeActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
+class HomeActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedListener {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -59,9 +46,10 @@ class HomeActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
                 startActivity(Intent(this, CatsActivity::class.java))
                 true
             }
-//            R.id.action_dogs -> {
-//                true
-//            }
+            R.id.action_dogs -> {
+                startActivity(Intent(this, DogsActivity::class.java))
+                true
+            }
 //            R.id.action_foxes -> {
 //                true
 //            }

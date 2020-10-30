@@ -2,30 +2,30 @@
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <com.takisoft.preferencex.PreferenceCategory android:title="@string/pref_animalCat">
+<!--    <com.takisoft.preferencex.PreferenceCategory android:title="@string/pref_animalCat">-->
 
-        <SwitchPreference
-            android:defaultValue="true"
-            android:key="key_cats"
-            android:summaryOff="@string/pref_catsSummaryOff"
-            android:summaryOn="@string/pref_catsSummaryOn"
-            android:title="@string/pref_cats" />
+<!--        <SwitchPreference-->
+<!--            android:defaultValue="true"-->
+<!--            android:key="key_cats"-->
+<!--            android:summaryOff="@string/pref_catsSummaryOff"-->
+<!--            android:summaryOn="@string/pref_catsSummaryOn"-->
+<!--            android:title="@string/pref_cats" />-->
 
-        <SwitchPreference
-            android:defaultValue="false"
-            android:key="key_dogs"
-            android:summaryOff="@string/pref_dogsSummaryOff"
-            android:summaryOn="@string/pref_dogsSummaryOn"
-            android:title="@string/pref_dogs" />
+<!--        <SwitchPreference-->
+<!--            android:defaultValue="false"-->
+<!--            android:key="key_dogs"-->
+<!--            android:summaryOff="@string/pref_dogsSummaryOff"-->
+<!--            android:summaryOn="@string/pref_dogsSummaryOn"-->
+<!--            android:title="@string/pref_dogs" />-->
 
-        <SwitchPreference
-            android:defaultValue="false"
-            android:key="key_foxes"
-            android:summaryOff="@string/pref_foxesSummaryOff"
-            android:summaryOn="@string/pref_foxesSummaryOn"
-            android:title="@string/pref_foxes" />
+<!--        <SwitchPreference-->
+<!--            android:defaultValue="false"-->
+<!--            android:key="key_foxes"-->
+<!--            android:summaryOff="@string/pref_foxesSummaryOff"-->
+<!--            android:summaryOn="@string/pref_foxesSummaryOn"-->
+<!--            android:title="@string/pref_foxes" />-->
 
-    </com.takisoft.preferencex.PreferenceCategory>
+<!--    </com.takisoft.preferencex.PreferenceCategory>-->
 
     <com.takisoft.preferencex.PreferenceCategory android:title="@string/pref_globalCat">
 

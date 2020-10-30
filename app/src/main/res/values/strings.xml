@@ -1,6 +1,9 @@
 <resources>
     <string name="app_name">Animals</string>
 
+    <!--Home-->
+    <string name="home_welcome">Welcome to my Animal Picture APP</string>
+
     <!--Menu-->
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
