@@ -11,7 +11,7 @@ open class BaseActivity : KoinComponent, AppCompatActivity()  {
     val settings: AppSettings by inject()
 
 
-    fun saveAsFavorite(picture: AnimalPicture) {
+    fun manageFavorite(picture: AnimalPicture) {
 
     }
 }

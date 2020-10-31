@@ -31,4 +31,9 @@
     <string name="pref_globalCat">Global</string>
     <string name="pref_nbItems">Number of each animals you want to see</string>
 
+    <!--Adapter-->
+    <string name="adapter_click">Press long to add to favorite</string>
+    <string name="adapter_add">Add to favorite</string>
+    <string name="adapter_remove">Remove from favorite</string>
+
 </resources>

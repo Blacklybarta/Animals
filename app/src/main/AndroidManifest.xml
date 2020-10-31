@@ -12,8 +12,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Animals">
-        <activity android:name=".ui.animals.dogs.DogsActivity"></activity>
-        <activity android:name=".ui.animals.cats.CatsActivity" />
+        <activity android:name=".ui.animals.AnimalsActivity" />
         <activity
             android:name=".ui.home.HomeActivity"
             android:theme="@style/Theme.Animals.NoActionBar">

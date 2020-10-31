@@ -8,10 +8,13 @@ import androidx.core.view.GravityCompat
 import com.google.android.material.navigation.NavigationView
 import com.jefpoughon.animals.R
 import com.jefpoughon.animals.ui.BaseActivity
-import com.jefpoughon.animals.ui.animals.cats.CatsActivity
-import com.jefpoughon.animals.ui.animals.dogs.DogsActivity
+import com.jefpoughon.animals.ui.animals.AnimalsActivity
 import com.jefpoughon.animals.ui.settings.SettingsActivity
 import kotlinx.android.synthetic.main.activity_home.*
+
+const val ANIMALS = "animals"
+const val CATS = "cats"
+const val DOGS = "dogs"
 
 class HomeActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedListener {
 
@@ -43,11 +46,15 @@ class HomeActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
                 true
             }
             R.id.action_cats -> {
-                startActivity(Intent(this, CatsActivity::class.java))
+                startActivity(Intent(this, AnimalsActivity::class.java).apply {
+                    putExtra(ANIMALS, CATS)
+                })
                 true
             }
             R.id.action_dogs -> {
-                startActivity(Intent(this, DogsActivity::class.java))
+                startActivity(Intent(this, AnimalsActivity::class.java).apply {
+                    putExtra(ANIMALS, DOGS)
+                })
                 true
             }
 //            R.id.action_foxes -> {

@@ -1,7 +1,9 @@
 package com.jefpoughon.animals.service
 
+import com.jefpoughon.animals.model.AnimalPicture
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
+import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.converter.scalars.ScalarsConverterFactory
 import retrofit2.http.GET
 
@@ -10,7 +12,7 @@ private const val DOG_BASE_URL = "https://random.dog"
 interface DogService {
 
     @GET("/woof.json")
-    suspend fun getDog(): String
+    suspend fun getDog(): AnimalPicture
 
     object Creator {
         @JvmStatic
@@ -20,6 +22,7 @@ interface DogService {
                 client(OkHttpClient.Builder().build())
                 baseUrl(DOG_BASE_URL)
                 addConverterFactory(ScalarsConverterFactory.create())
+                addConverterFactory(GsonConverterFactory.create())
             }.build()
 
             return retrofit.create(DogService::class.java)

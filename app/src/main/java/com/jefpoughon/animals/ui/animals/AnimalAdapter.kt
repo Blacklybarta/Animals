@@ -4,7 +4,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.bumptech.glide.Glide
+import com.google.android.material.button.MaterialButton
+import com.google.android.material.card.MaterialCardView
+import com.google.android.material.snackbar.Snackbar
 import com.jefpoughon.animals.R
 import com.jefpoughon.animals.model.AnimalPicture
 import com.jefpoughon.animals.ui.BaseActivity
@@ -27,12 +29,24 @@ class AnimalAdapter(private val animal: List<AnimalPicture>, private val activit
 
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         fun bind(item: AnimalPicture, activity: BaseActivity) = with(itemView) {
-            Glide.with(activity)
-                .load(if (item.file.isNotEmpty()) item.file else item.url)
-                .circleCrop()
-                .into(animal_image)
-            animal_image.setOnClickListener {
-                activity.saveAsFavorite(item)
+            item.image?.let {
+                animal_image.setImageBitmap(it)
+            }
+
+            card.isChecked = item.favorite
+
+            card.setOnClickListener {
+                Snackbar.make(
+                    card,
+                    context.getString(R.string.adapter_click),
+                    Snackbar.LENGTH_SHORT
+                ).show()
+            }
+            card.setOnLongClickListener {
+                activity.manageFavorite(item)
+                item.favorite = card.isChecked
+                card.isChecked = !card.isChecked
+                true
             }
         }
     }
