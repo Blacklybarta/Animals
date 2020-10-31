@@ -5,7 +5,6 @@ import android.graphics.BitmapFactory
 import android.os.Bundle
 import android.util.Log
 import android.view.View
-import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.jefpoughon.animals.R
@@ -16,11 +15,7 @@ import com.jefpoughon.animals.ui.BaseActivity
 import com.jefpoughon.animals.ui.home.ANIMALS
 import com.jefpoughon.animals.ui.home.CATS
 import kotlinx.android.synthetic.main.activity_animals.*
-import kotlinx.android.synthetic.main.animal_row.*
 import kotlinx.coroutines.*
-import kotlinx.coroutines.channels.Channel
-import kotlinx.coroutines.channels.broadcast
-import kotlinx.coroutines.channels.consumesAll
 import java.net.URL
 
 class AnimalsActivity : BaseActivity() {
@@ -61,6 +56,8 @@ class AnimalsActivity : BaseActivity() {
             dogService = DogService.Creator.create()
         }
 
+        animals.clear()
+
         for (i in 0 until settings.number.toInt()) {
             GlobalScope.launch(Dispatchers.Main) {
 
@@ -70,7 +67,7 @@ class AnimalsActivity : BaseActivity() {
                     animal.image = if (isCats) {
                         getBitMap(animal.file ?: "")
                     } else {
-                        if (!animal.url?.endsWith(".mp4")!!) {
+                        if (!animal.url?.endsWith(".mp4")!!) { //not only image in dog API
                             getBitMap(animal.url ?: "")
                         } else {
                             null

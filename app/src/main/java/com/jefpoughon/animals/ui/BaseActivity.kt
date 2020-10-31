@@ -10,8 +10,7 @@ open class BaseActivity : KoinComponent, AppCompatActivity()  {
 
     val settings: AppSettings by inject()
 
-
     fun manageFavorite(picture: AnimalPicture) {
-
+        //save it in room
     }
 }
