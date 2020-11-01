@@ -1,5 +1,6 @@
 package com.jefpoughon.animals.extensions
 
+import com.jefpoughon.animals.model.AnimalDb
 import com.jefpoughon.animals.model.AnimalJson
 import com.jefpoughon.animals.model.AnimalPicture
 
@@ -12,5 +13,13 @@ fun AnimalJson.toAnimalPicture(): AnimalPicture {
         },
         image = null,
         favorite = false
+    )
+}
+
+fun AnimalDb.toAnimalPicture(): AnimalPicture {
+    return AnimalPicture(
+        filePath = uri.toString(),
+        image = null,
+        favorite = true
     )
 }

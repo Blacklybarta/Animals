@@ -15,7 +15,7 @@ import org.koin.core.inject
 open class BaseActivity : KoinComponent, AppCompatActivity() {
 
     val settings: AppSettings by inject()
-    private val animalDao: AnimalDbDao by inject()
+    val animalDao: AnimalDbDao by inject()
 
     fun manageFavorite(picture: AnimalPicture) {
 

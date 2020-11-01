@@ -20,10 +20,10 @@
         android:title="@string/menu_dogs"
         app:showAsAction="never" />
 
-<!--    <item-->
-<!--        android:id="@+id/action_foxes"-->
-<!--        android:orderInCategory="80"-->
-<!--        android:title="@string/menu_foxes"-->
-<!--        app:showAsAction="never" />-->
+    <item
+        android:id="@+id/action_favorites"
+        android:orderInCategory="80"
+        android:title="@string/menu_favorites"
+        app:showAsAction="never" />
 
 </menu>

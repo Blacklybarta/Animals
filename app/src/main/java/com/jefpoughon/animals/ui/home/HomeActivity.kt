@@ -8,13 +8,12 @@ import androidx.core.view.GravityCompat
 import com.google.android.material.navigation.NavigationView
 import com.jefpoughon.animals.R
 import com.jefpoughon.animals.ui.BaseActivity
+import com.jefpoughon.animals.ui.CHOICE
 import com.jefpoughon.animals.ui.animals.AnimalsActivity
 import com.jefpoughon.animals.ui.settings.SettingsActivity
 import kotlinx.android.synthetic.main.activity_home.*
 
 const val ANIMALS = "animals"
-const val CATS = "cats"
-const val DOGS = "dogs"
 
 class HomeActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedListener {
 
@@ -47,19 +46,22 @@ class HomeActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
             }
             R.id.action_cats -> {
                 startActivity(Intent(this, AnimalsActivity::class.java).apply {
-                    putExtra(ANIMALS, CATS)
+                    putExtra(ANIMALS, CHOICE.CATS.choice)
                 })
                 true
             }
             R.id.action_dogs -> {
                 startActivity(Intent(this, AnimalsActivity::class.java).apply {
-                    putExtra(ANIMALS, DOGS)
+                    putExtra(ANIMALS, CHOICE.DOGS.choice)
                 })
                 true
             }
-//            R.id.action_foxes -> {
-//                true
-//            }
+            R.id.action_favorites -> {
+                startActivity(Intent(this, AnimalsActivity::class.java).apply {
+                    putExtra(ANIMALS, CHOICE.FAVORITES.choice)
+                })
+                true
+            }
             else -> super.onOptionsItemSelected(item)
         }
     }

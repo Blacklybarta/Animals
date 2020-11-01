@@ -13,8 +13,8 @@ import com.jefpoughon.animals.model.AnimalPicture
 import com.jefpoughon.animals.service.CatService
 import com.jefpoughon.animals.service.DogService
 import com.jefpoughon.animals.ui.BaseActivity
+import com.jefpoughon.animals.ui.CHOICE
 import com.jefpoughon.animals.ui.home.ANIMALS
-import com.jefpoughon.animals.ui.home.CATS
 import kotlinx.android.synthetic.main.activity_animals.*
 import kotlinx.coroutines.*
 import java.net.URL
@@ -30,7 +30,8 @@ class AnimalsActivity : BaseActivity() {
 
     private var animals = ArrayList<AnimalPicture>()
 
-    private var isCats = false
+    private var isCats = true
+    private var selection = ""
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -45,20 +46,44 @@ class AnimalsActivity : BaseActivity() {
             adapter = readerAdapter
         }
 
-        isCats = intent.getStringExtra(ANIMALS).equals(CATS)
+        selection = intent.getStringExtra(ANIMALS) ?: ""
     }
 
     override fun onResume() {
         super.onResume()
 
-        if (isCats) {
-            catService = CatService.Creator.create()
-        } else {
-            dogService = DogService.Creator.create()
-        }
-
         animals.clear()
 
+        when (selection) {
+            CHOICE.CATS.choice -> {
+                isCats = true
+                catService = CatService.Creator.create()
+                getRandomCatsOrDogs()
+            }
+            CHOICE.DOGS.choice -> {
+                isCats = false
+                dogService = DogService.Creator.create()
+                getRandomCatsOrDogs()
+            }
+            CHOICE.FAVORITES.choice -> {
+                GlobalScope.launch(Dispatchers.Main) {
+                    val result: Deferred<List<AnimalPicture>> = GlobalScope.async {
+                        val favorites = animalDao.getAll().map {
+                            it.toAnimalPicture()
+                        }
+                        favorites.forEach {
+                            it.image = getBitMap(it.filePath)
+                        }
+                        favorites
+                    }
+                    animals.addAll(result.await())
+                    refreshRecyclerView()
+                }
+            }
+        }
+    }
+
+    private fun getRandomCatsOrDogs() {
         for (i in 0 until settings.number.toInt()) {
             GlobalScope.launch(Dispatchers.Main) {
 

@@ -10,7 +10,7 @@
     <string name="menu_settings">Settings</string>
     <string name="menu_cats">Cats</string>
     <string name="menu_dogs">Dogs</string>
-    <string name="menu_foxes">Foxes</string>
+    <string name="menu_favorites">Favorites</string>
 
     <!--Settings-->
     <string name="settings_label">Settings</string>
