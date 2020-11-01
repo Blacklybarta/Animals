@@ -4,8 +4,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.google.android.material.button.MaterialButton
-import com.google.android.material.card.MaterialCardView
 import com.google.android.material.snackbar.Snackbar
 import com.jefpoughon.animals.R
 import com.jefpoughon.animals.model.AnimalPicture
@@ -43,9 +41,9 @@ class AnimalAdapter(private val animal: List<AnimalPicture>, private val activit
                 ).show()
             }
             card.setOnLongClickListener {
-                activity.manageFavorite(item)
-                item.favorite = card.isChecked
+                item.favorite = !card.isChecked
                 card.isChecked = !card.isChecked
+                activity.manageFavorite(item)
                 true
             }
         }

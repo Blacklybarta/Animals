@@ -1,6 +1,6 @@
 package com.jefpoughon.animals.service
 
-import com.jefpoughon.animals.model.AnimalPicture
+import com.jefpoughon.animals.model.AnimalJson
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
@@ -12,7 +12,7 @@ private const val DOG_BASE_URL = "https://random.dog"
 interface DogService {
 
     @GET("/woof.json")
-    suspend fun getDog(): AnimalPicture
+    suspend fun getDog(): AnimalJson
 
     object Creator {
         @JvmStatic

@@ -1,6 +1,6 @@
 package com.jefpoughon.animals.service
 
-import com.jefpoughon.animals.model.AnimalPicture
+import com.jefpoughon.animals.model.AnimalJson
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
@@ -12,7 +12,7 @@ private const val CAT_BASE_URL = "https://aws.random.cat"
 interface CatService {
 
     @GET("/meow")
-    suspend fun getCat(): AnimalPicture
+    suspend fun getCat(): AnimalJson
 
     object Creator {
         @JvmStatic

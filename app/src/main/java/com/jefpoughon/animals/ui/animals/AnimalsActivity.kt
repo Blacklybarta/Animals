@@ -8,6 +8,7 @@ import android.view.View
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.jefpoughon.animals.R
+import com.jefpoughon.animals.extensions.toAnimalPicture
 import com.jefpoughon.animals.model.AnimalPicture
 import com.jefpoughon.animals.service.CatService
 import com.jefpoughon.animals.service.DogService
@@ -63,26 +64,16 @@ class AnimalsActivity : BaseActivity() {
 
                 // async task to get / download bitmap from url
                 val result: Deferred<AnimalPicture> = GlobalScope.async {
-                    val animal = if (isCats) catService.getCat() else dogService.getDog()
-                    animal.image = if (isCats) {
-                        getBitMap(animal.file ?: "")
-                    } else {
-                        if (!animal.url?.endsWith(".mp4")!!) { //not only image in dog API
-                            getBitMap(animal.url ?: "")
-                        } else {
-                            null
-                        }
-                    }
+                    val animalJson = if (isCats) catService.getCat() else dogService.getDog()
+                    val animal = animalJson.toAnimalPicture()
+                    animal.image = getBitMap(animal.filePath)
                     animal
                 }
 
                 // get the downloaded bitmap
                 val animal: AnimalPicture = result.await()
                 animals.add(animal)
-
-                withContext(Dispatchers.Main) {
-                    refreshRecyclerView()
-                }
+                refreshRecyclerView()
             }
         }
     }
